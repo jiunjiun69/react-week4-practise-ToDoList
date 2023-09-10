@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-const { USER_API } = import.meta.env;
+
+const { VITE_USER_API } = import.meta.env;
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -27,10 +28,9 @@ const SignUp = () => {
       nickname,
     };
     setIsLoading(true);
-    console.log({USER_API});
     try {
       const res = await axios.post(
-        `${USER_API}/users/sign_up`,
+        `${VITE_USER_API}/users/sign_up`,
         signUpData
       );
       Swal.fire('註冊成功', '即將前往登入頁').then(() => {

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-const { USER_API } = import.meta.env;
+
+const { VITE_USER_API } = import.meta.env;
 
 const TodoList = () => {
   const [nickname, setNickName] = useState('');
@@ -40,7 +41,7 @@ const TodoList = () => {
 
   const checkAuth = async () => {
     try {
-      const res = await axios.get(`${USER_API}/users/checkout`, {
+      const res = await axios.get(`${VITE_USER_API}/users/checkout`, {
         headers: {
           Authorization: token,
         },
@@ -56,7 +57,7 @@ const TodoList = () => {
 
   const getTodos = async () => {
     try {
-      const res = await axios.get(`${USER_API}/todos`, {
+      const res = await axios.get(`${VITE_USER_API}/todos`, {
         headers: {
           Authorization: token,
         },
@@ -74,7 +75,7 @@ const TodoList = () => {
     }
     try {
       const res = await axios.post(
-        `${USER_API}/todos`,
+        `${VITE_USER_API}/todos`,
         {
           content: newTodo,
         },
@@ -101,7 +102,7 @@ const TodoList = () => {
   const finishTodo = async (id) => {
     try {
       const res = await axios.patch(
-        `${USER_API}/todos/${id}/toggle`,
+        `${VITE_USER_API}/todos/${id}/toggle`,
         {},
         {
           headers: {
@@ -117,7 +118,7 @@ const TodoList = () => {
 
   const deleteTodo = async (id) => {
     try {
-      const res = await axios.delete(`${USER_API}/todos/${id}`, {
+      const res = await axios.delete(`${VITE_USER_API}/todos/${id}`, {
         headers: {
           Authorization: token,
         },
@@ -193,7 +194,7 @@ const TodoList = () => {
                 addTodo();
               }}
             >
-              <img src="/react_todolist/plus.png" alt="plus" />
+              <img src="/react-week4-practise-ToDoList/plus.png" alt="plus" />
             </a>
           </div>
           <div className="todoList_list">
@@ -266,7 +267,7 @@ const TodoList = () => {
                           deleteTodo(todo.id);
                         }}
                       >
-                        <img src="/react_todolist/delete.jpg" alt="delete" />
+                        <img src="/react-week4-practise-ToDoList/delete.jpg" alt="delete" />
                       </a>
                     </li>
                   );

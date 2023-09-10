@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { NavLink } from 'react-router-dom';
-const { USER_API } = import.meta.env;
+
+const { VITE_USER_API } = import.meta.env;
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ const Login = () => {
     };
     setIsLoading(true);
     try {
-      const res = await axios.post(`${USER_API}/users/sign_in`, loginData);
+      const res = await axios.post(`${VITE_USER_API}/users/sign_in`, loginData);
       const { data } = await res;
       document.cookie = `token=${data.token}; SameSite=None; Secure`;
       Swal.fire({
