@@ -11,3 +11,6 @@ Currently, two official plugins are available:
 
 ## Env Variables and Modes
 [Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
+
+## axios Config Defaults
+[Config Defaults](https://axios-http.com/docs/config_defaults)
